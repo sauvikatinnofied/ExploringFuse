@@ -1,0 +1,137 @@
+<App Theme="Basic" ClearColor="#3A4158">
+
+	<!-- STATUS BAR CONFIGURATION FOR iOS-->
+	<iOS.StatusBarConfig ux:Name="statusBarConfig" Style="Light" IsVisible="true" Animation="Slide"/>
+	<Font File="assets/fonts/Roboto-Bold.ttf" ux:Global="RobotoBold"/>
+	<Image ux:Class="Icon" StretchDirection="DownOnly" StretchMode="Uniform"/>
+
+
+	<!-- ACCOUNT CREATION ICON -->
+	<Icon ux:Class="AccountIcon">
+		<MultiDensityImageSource>
+			<FileImageSource File="assets/profile@1x.png" Density="1"/>
+			<FileImageSource File="assets/profile@1x.png" Density="2"/>
+		</MultiDensityImageSource>
+	</Icon>
+
+	<!-- ADD ICON -->
+	<Icon ux:Class="AddIcon">
+		<MultiDensityImageSource>
+			<FileImageSource File="assets/add@1x.png" Density="1"/>
+			<FileImageSource File="assets/add@2x.png" Density="1"/>
+		</MultiDensityImageSource>
+
+	</Icon>
+	
+
+	<!-- ADD ICON -->
+	<Icon ux:Class="StickersIcon">
+		<MultiDensityImageSource>
+			<FileImageSource File="assets/stickers@1x.png" Density="1"/>
+			<FileImageSource File="assets/stickers@2x.png" Density="1"/>
+		</MultiDensityImageSource>
+	</Icon>
+
+
+	<!-- SINGLE SIDE BAR ICON -->
+	<Panel ux:Class="SideBarIcon" Width="50" Height="50">
+
+		<!-- OUTER CIRCLE -->
+		<Circle ux:Name="tapAnimationStroke" Layer="Overlay">
+			<Stroke Width="5">
+				<SolidColor Color="#fff5"/>
+			</Stroke>
+		</Circle>
+
+		<!-- ON TAP ANIMATION CIRCLE -->
+		<Circle ux:Name="tapAnimationCircle" Layer="Overlay">
+			<Stroke Width="3">
+				<SolidColor Color="#fff5" />
+			</Stroke>
+		</Circle>
+
+		<!-- IMAGE STYLE -->
+		<Style>
+			<Image MaxWidth="48" MaxHeight="48"/>
+		</Style>
+
+		<!-- ON TAP TRANSFORMATIONS -->
+		<Tapped>
+			<!-- SCALLING THE TAP ANIMATION CIRLE -->
+			<Scale Target="tapAnimationCircle" Factor="5" Duration="0.5" Easing="QuadraticOut" DurationBack="0.0"/>
+			<Change tapAnimationCircle.Opacity="0"  Duration="0.5" Easing="QuadraticOut" DurationBack="0.0"/>
+			<Change tapAnimationCircle.Smoothness="10"  Duration="0.5" Easing="QuadraticOut" DurationBack="0.0"/>
+			<Change tapAnimationStroke.Width= "0" Duration="0.5" DurationBack="0" Easing="ExponentialOut"/>
+		</Tapped>
+
+
+
+		<!-- HAMBERGER MENU ICON -->
+		<StackPanel ux:Class="HamburgerIcon" Width="25" Height="21">
+			<Style>
+				<Rectangle Margin="0,2" Height="3" CornerRadius="3">
+					<SolidColor Color="#fff" />
+				</Rectangle>
+			</Style>
+
+			<Rectangle />
+			<Rectangle />
+			<Rectangle />
+		</StackPanel>
+		<!-- END OF HAMBERGER MENU -->
+
+		<!-- CLOSE MENU ICON -->
+		<Panel ux:Class="CloseIcon" Width="25" Height="25">
+			<Style>
+				<Rectangle Height="3" CornerRadius="3">
+					<SolidColor Color="#fff" />
+				</Rectangle>
+			</Style>
+
+			<Rectangle>
+				<Rotation Degrees="45" />
+			</Rectangle>
+			<Rectangle>
+				<Rotation Degrees="-45" />
+			</Rectangle>
+		</Panel>
+		<!-- END OF CLOSE MENU -->
+	</Panel>
+
+	<DockPanel>
+
+			<BottomBarBackground Dock="Bottom"/>
+
+			<!-- THE ROTATING CONTENT -->
+			<DockPanel>
+				<!-- SETTING UP THE TOP CONTENT OF THE DOC -->
+				<Panel Doc= "Top">
+					<iOS>
+						<Panel ux:Name="statusBarBackground" Height="20" />
+					</iOS>
+					<Android> <StatusBarBackground/></Android>
+				</Panel>
+
+				<!-- THE MENU BUTTON -->
+				<Panel ux:Name="menuButton" Width="170" Height="170" Alignment="TopLeft" Offset="-85,-85" Padding="40">
+					<!-- FOR BACKGROUND COLOR -->
+					<Circle Layer="Background">
+						<SolidColor Color="#EE8485"/>
+						<HamburgerIcon Alignment="BottomRight"/>
+						<CloseIcon Alignment="BottomLeft"/>
+						<!-- ON CLICK FUNCTION IS REQUIRED -->
+					</Circle>
+				</Panel>
+
+				<!-- THE MAIN CONTENT OF THE SCREEN-->
+				<Panel ux:Name="content" TransformOrigin="TopLeft">
+					<Grid>
+						<Panel><SolidColor Color="#FDF0CC" /></Panel>
+						<Panel><SolidColor Color="#F7CAB1" /></Panel>
+						<Panel><SolidColor Color="#E8A0A2" /></Panel>
+						<Panel><SolidColor Color="#C2768E" /></Panel>
+					</Grid>
+				</Panel>
+			</DockPanel>
+	</DockPanel>
+</App>

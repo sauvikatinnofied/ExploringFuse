@@ -1,4 +1,32 @@
 <App Background="#eeeeeeff" Theme="Basic">
 
+<!--Adding a simple Hello World Label at the center of the screen !-->
+<Font File="Assets/Fonts/HelveticaNeueLTStdLt.otf" ux:Global="Medium"/>
+<!-- <StackPanel>
+
+	<Button Text="Press Me" />
+	<Button Text="Press Me"/>
+	<Text Font= "Medium" FontSize="15"  Alignment="Center" TextWrapping="Wrap" Margin="20" TextColor="#d2df32" TextAlignment="Center" LineSpacing="20">
+		Fuse comes with a number of UI components that can be used to construct a user interface. In UX you can add UI components by enclosing them in tags
+	</Text>
+
+	<Number Value="3.14159265359" Format="F03" Alignment="Center"/>
+
+</StackPanel> -->
+
+<FileImageSource ux:Key="pic2" File="Assets/background1.png" />
+<StackPanel>
+    <JavaScript>
+        module.exports = {
+            imageResourceFrom: "pic2",
+            url: "https://www.gravatar.com/avatar/d5b8707eab29da3f001874a10820df36?s=48&d=identicon&r=PG",
+
+        }
+    </JavaScript>
+    <Image File="Assets/background2.png" Width="100" />
+    <Image Source="{DataToResource imageResourceFrom}" Width="100" Color="#0cc"/>
+    <Image Url="{url}" Width="35"/>
+</StackPanel>
+
 
 </App>
